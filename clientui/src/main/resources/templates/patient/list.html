@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+    <div class="inner">
+        <div class="title">
+            <h2>Patient managment</h2>
+        </div>
+        <div class="content-area">
+            <div class="content-head">
+                <a class="btn-primary"><i class="fa fa-plus"/>  New patient</a>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Numéro de téléphone</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>Tella</td>
+                    <td>Eric</td>
+                    <td>23/02/81</td>
+                    <td>0758951895</td>
+                    <td>
+                        <a href='#0'><i class="fa fa-edit"/></a>
+                        <a href='#0'><i class="fa fa-trash"/></a>
+                    </td>
+
+                </tr>
+
+            </table>
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a class="active" href="#">
+                    2
+                </a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>

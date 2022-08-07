@@ -12,39 +12,45 @@
     </div>
     <div class="content-area">
         <div class="form">
-            <form action='#' method='post'>
-                <div class='field error'>
+            <form th:action="@{/patient/add}" method='post' th:object="${patientBean}">
+                <div class='field' th:classappend="${#fields.hasErrors('firstname')} ? 'error' : ''">
                     <input type="text"  name="firstname" placeholder="Nom..." class="error"/>
-                    <span class="error-message">This field is incorrect.</span>
+                    <span class="error-message"
+                          th:errors="*{firstname}" th:if="${#fields.hasErrors('firstname')}"/>
                 </div>
-                <div class='field error'>
+                <div class='field'
+                     th:classappend="${#fields.hasErrors('lastname')} ? 'error' : ''">
                     <input type="text" name="lastname" placeholder="Prénom..."/>
-                    <span class="error-message">This field is incorrect.</span>
+                    <span class="error-message"
+                          th:errors="*{lastname}" th:if="${#fields.hasErrors('lastname')}"/>
                 </div>
-                <div class='field'>
+                <div class='field'  th:classappend="${#fields.hasErrors('birthdate')} ? 'error' : ''">
                     <input type="text" name="birthdate" placeholder="Date de naissance..."/>
-                    <span class="error-message">This field is incorrect.</span>
+                    <span class="error-message"
+                          th:errors="*{birthdate}" th:if="${#fields.hasErrors('birthdate')}"/>
                 </div>
                 <div class='field'>
                     <div class="genre">
-                        <input type="checkbox" value="H" id="homme"/> <label for="homme">Homme</label>
+                        <input type="radio" name="genre" value="H" id="homme" checked/> <label for="homme">Homme</label>
 
                     </div>
                     <div class="genre">
-                        <input type="checkbox" value="H" id="femme"/> <label for="femme">Femme</label>
+                        <input type="radio" name="genre" value="H" id="femme"/> <label for="femme">Femme</label>
 
                     </div>
                 </div>
-                <div class='field'>
+                <div class='field' th:classappend="${#fields.hasErrors('address')} ? 'error' : ''">
                     <input type="text" name="address" placeholder="Adresse postale..."/>
-                    <span class="error-message">This field is incorrect.</span>
+                    <span class="error-message"
+                          th:errors="*{address}" th:if="${#fields.hasErrors('address')}"/>
                 </div>
-                <div class='field'>
+                <div class='field' th:classappend="${#fields.hasErrors('phoneNumber')} ? 'error' : ''">
                     <input type="text" name="phoneNumber" placeholder="Numéro de téléphone..."/>
-                    <span class="error-message">This field is incorrect.</span>
+                    <span class="error-message"
+                          th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}"/>
                 </div>
-                <div class='field'>
-                    <input type="submit" value="Create"></input>
+                <div class='field' >
+                    <input type="submit" value="Create"/>
                 </div>
             </form>
         </div>

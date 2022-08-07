@@ -26,7 +26,7 @@ body {
     font-size: var(--fs-500);
     color: hsl(var(--clr-black));
     background-color: hsl(var(--clr-white));
-    line-height: var(--lh-15);
+    line-height: var(--lh-095);
     overflow-x: hidden;
 }
 
@@ -63,7 +63,7 @@ input:focus {
     background-color: rgba(103, 154, 174, 0.6);
 }
 .table tr:hover {
-    background-color: hsl(var(--clr-green-light));
+    background-color: hsl(var(--clr-green));
 }
 .table th {
     padding: 25px 0;
@@ -83,7 +83,7 @@ input:focus {
     float: left;
     padding: 8px 19px;
     text-decoration: none;
-    border: 1px solid hsl(var(--clr-light-grey));
+    border: 1px solid hsl(var(--clr-blue));
 }
 .pagination a.active {
     background-color: hsl(var(--clr-green));
@@ -91,7 +91,8 @@ input:focus {
     border: 1px solid hsl(var(--clr-green));
 }
 .pagination a:hover:not(.active) {
-    background-color: hsl(var(--clr-light-grey));
+    background-color: hsl(var(--clr-black));
+    color: hsl(var(--clr-white));
 }
 .pagination a:first-child {
     border-top-left-radius: 5px;
@@ -129,7 +130,7 @@ input:focus {
     margin-left: 20px;
 }
 .form .field .genre {
-    margin-bottom: 4px;
+    margin-bottom: 9px;
 }
 .form .field .error-message {
     display: none;
@@ -149,7 +150,7 @@ input {
     float: left;
     display: block;
     padding-right: 2px;
-    border: 1px solid hsl(var(--clr-light-grey));
+    border: 1px solid hsl(var(--clr-blue));
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
     font-size: 0.9rem;
     border-radius: 4px;
@@ -169,10 +170,11 @@ input[type=submit] {
     cursor: pointer;
 }
 input[type=submit]:hover {
-    background-color: hsl(var(--clr-green-light));
+    background-color: hsl(var(--clr-black));
+    color: hsl(var(--clr-white));
 }
 
-input[type=checkbox] {
+input[type=radio] {
     width: 17px;
     height: 17px;
     position: relative;
