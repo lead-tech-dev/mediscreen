@@ -13,29 +13,29 @@
     <div class="content-area">
         <div class="form">
             <form th:action="@{/patient/add}" method='post' th:object="${patientBean}">
-                <div class='field' th:classappend="${#fields.hasErrors('firstname')} ? 'error' : ''">
-                    <input type="text"  name="firstname" placeholder="Nom..." class="error"/>
+                <div class='field' th:classappend="${#fields.hasErrors('family')} ? 'error' : ''">
+                    <input type="text"  name="family" placeholder="Nom..." class="error"/>
                     <span class="error-message"
-                          th:errors="*{firstname}" th:if="${#fields.hasErrors('firstname')}"/>
+                          th:errors="*{family}" th:if="${#fields.hasErrors('family')}"/>
                 </div>
                 <div class='field'
-                     th:classappend="${#fields.hasErrors('lastname')} ? 'error' : ''">
-                    <input type="text" name="lastname" placeholder="Prénom..."/>
+                     th:classappend="${#fields.hasErrors('given')} ? 'error' : ''">
+                    <input type="text" name="given" placeholder="Prénom..."/>
                     <span class="error-message"
-                          th:errors="*{lastname}" th:if="${#fields.hasErrors('lastname')}"/>
+                          th:errors="*{given}" th:if="${#fields.hasErrors('given')}"/>
                 </div>
-                <div class='field'  th:classappend="${#fields.hasErrors('birthdate')} ? 'error' : ''">
-                    <input type="text" name="birthdate" placeholder="Date de naissance..."/>
+                <div class='field'  th:classappend="${#fields.hasErrors('dob')} ? 'error' : ''">
+                    <input type="text" name="dob" placeholder="Date de naissance..."/>
                     <span class="error-message"
-                          th:errors="*{birthdate}" th:if="${#fields.hasErrors('birthdate')}"/>
+                          th:errors="*{dob}" th:if="${#fields.hasErrors('dob')}"/>
                 </div>
                 <div class='field'>
                     <div class="genre">
-                        <input type="radio" name="genre" value="H" id="homme" checked/> <label for="homme">Homme</label>
+                        <input type="radio" name="sex" value="H" id="homme" checked/> <label for="homme">H</label>
 
                     </div>
                     <div class="genre">
-                        <input type="radio" name="genre" value="H" id="femme"/> <label for="femme">Femme</label>
+                        <input type="radio" name="sex" value="F" id="femme"/> <label for="femme">F</label>
 
                     </div>
                 </div>
@@ -44,13 +44,15 @@
                     <span class="error-message"
                           th:errors="*{address}" th:if="${#fields.hasErrors('address')}"/>
                 </div>
-                <div class='field' th:classappend="${#fields.hasErrors('phoneNumber')} ? 'error' : ''">
-                    <input type="text" name="phoneNumber" placeholder="Numéro de téléphone..."/>
+                <div class='field' th:classappend="${#fields.hasErrors('phone')} ? 'error' : ''">
+                    <input type="text" name="phone" placeholder="Numéro de téléphone..."/>
                     <span class="error-message"
-                          th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}"/>
+                          th:errors="*{phone}" th:if="${#fields.hasErrors('phone')}"/>
                 </div>
-                <div class='field' >
+                <div class='field'>
                     <input type="submit" value="Create"/>
+                    <a th:href="@{/patient/list}" class="button">Cancel</a>
+
                 </div>
             </form>
         </div>

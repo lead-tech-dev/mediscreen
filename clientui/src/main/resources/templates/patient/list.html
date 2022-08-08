@@ -13,7 +13,7 @@
         </div>
         <div class="content-area">
             <div class="content-head">
-                <a class="btn-primary"><i class="fa fa-plus"/>  New patient</a>
+                <a th:href="@{/patient/addForm}" class="btn-primary"><i class="fa fa-plus"></i>  New patient</a>
             </div>
             <table class="table">
                 <tr>
@@ -23,29 +23,28 @@
                     <th>Numéro de téléphone</th>
                     <th>Action</th>
                 </tr>
-                <tr>
-                    <td>Tella</td>
-                    <td>Eric</td>
-                    <td>23/02/81</td>
-                    <td>0758951895</td>
+                <tr th:each="patient: ${patients}">
+                    <td th:text="${patient.family}"/>
+                    <td th:text="${patient.given}"/>
+                    <td th:text="${patient.dob}"/>
+                    <td th:text="${patient.phone}"/>
                     <td>
-                        <a href='#0'><i class="fa fa-edit"/></a>
-                        <a href='#0'><i class="fa fa-trash"/></a>
+                        <a th:href="${'/patient/updateForm/' + {patient.id}}"><i class="fa fa-edit"></i></a>
+                        <a th:href="${'/patient/delete/' + {patient.id}}"><i class="fa fa-trash"></i></a>
                     </td>
 
                 </tr>
 
             </table>
             <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a class="active" href="#">
-                    2
-                </a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">&raquo;</a>
+                <a th:href="@{'/patient/list/' + ${currentPage - 1}}" th:if="${currentPage > 1}">&laquo;</a>
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:class="${currentPage == i } ? active : ''"
+                           th:href="@{'/patient/list/' + ${i}}">[[${i
+                            }]]</a>
+                    </span>
+                <a th:href="@{'/patient/list/' + ${currentPage + 1}}" th:if="${currentPage < totalPages}">
+                    &raquo;</a>
             </div>
         </div>
     </div>

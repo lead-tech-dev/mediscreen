@@ -141,6 +141,27 @@ input:focus {
 .form .field.error .error-message {
     display: inline-block;
 }
+.form .field:last-child {
+    display: flex;
+    align-items: center;
+}
+.form .field:last-child input[type=submit] {
+    margin-right: 10px;
+}
+.form .field:last-child a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: hsl(var(--clr-red));
+    color: hsl(var(--clr-white));
+    height: 100%;
+    border-radius: 4px;
+}
+.form .field:last-child a:hover {
+    background-color: hsl(var(--clr-black));
+}
 
 input {
     position: relative;

@@ -6,36 +6,42 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * The PatientBean class implements a bean of
+ * Patient entity.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientBean {
 
-    @NotBlank
-    private String firstname;
+    private Long id;
 
     @NotBlank
-    private String lastname;
+    private String family;
 
     @NotBlank
-    private String birthdate;
+    private String given;
+
+    @NotBlank
+    private String dob;
 
 
-    private String genre;
+    private String sex;
 
     private String address;
 
-    private String phoneNumber;
+    private String phone;
 
     @Override
     public String toString() {
         return "PatientBean{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", birthdate='" + birthdate + '\'' +
-                ", genre='" + genre + '\'' +
+                "firstname='" + family + '\'' +
+                ", lastname='" + given + '\'' +
+                ", birthdate='" + dob + '\'' +
+                ", genre='" + sex + '\'' +
                 ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber='" + phone + '\'' +
                 '}';
     }
 }
