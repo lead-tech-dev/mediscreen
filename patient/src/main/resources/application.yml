@@ -16,3 +16,7 @@ spring:
     url: jdbc:mysql://localhost:3306/patientdb?serverTimezone=UTC
     username: root
     password: Makong57
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
