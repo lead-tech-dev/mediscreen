@@ -1,9 +1,9 @@
 package com.mediscreen.clientui.web.controller;
 
 import com.mediscreen.clientui.bean.PatientBean;
-import com.mediscreen.clientui.proxies.PatientProxy;
 import com.mediscreen.clientui.web.service.DateValidator;
-import com.mediscreen.clientui.web.service.impl.DateValidatorUsingDateFormat;
+import com.mediscreen.clientui.web.service.PatientService;
+import com.mediscreen.clientui.service.DateValidatorUsingDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class PatientController {
     private static final Logger log = LoggerFactory.getLogger(PatientController.class);
     private DateValidator dateValidator = new DateValidatorUsingDateFormat("yyyy-MM-dd");
     @Autowired
-    private PatientProxy patientProxy;
+    private PatientService patientService;
 
     /**
      * home. Method that display a home page.
@@ -56,7 +56,7 @@ public class PatientController {
     @GetMapping("/patient/list/{currentPage}")
     public String getOnePatient(Model model, @PathVariable("currentPage") int currentPage) {
 
-        Map<String, Object> response = patientProxy.getAllPatient(currentPage);
+        Map<String, Object> response = patientService.getAllPatient(currentPage);
 
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("patients", response.get("patients"));
@@ -74,7 +74,7 @@ public class PatientController {
      * @return patient/add view
      */
     @GetMapping("/patient/addForm")
-    public String showPatientForm(Model model) {
+    public String patientAddForm(Model model) {
         model.addAttribute("patientBean", new PatientBean());
 
         log.info("Displaying patient/add page!");
@@ -100,13 +100,13 @@ public class PatientController {
         }
 
         if (!dateValidator.isValid(patientBean.getDob())) {
-            log.error("{}, error date format", patientBean.getDob());
+            log.error("error date format for {}", patientBean.getDob());
             result.rejectValue("dob", "error.badDateFormat",
                     "Format accepté : yyyy-MM-dd!");
             return "patient/add";
         }
 
-        patientProxy.addPatient(patientBean);
+        patientService.addPatient(patientBean);
 
         log.info("successfully patient added, {}", patientBean);
 
@@ -123,7 +123,7 @@ public class PatientController {
      */
     @GetMapping("/patient/updateForm/{id}")
     public String showUpdateForm(Model model, @PathVariable long id) {
-        PatientBean patient = patientProxy.getPatient(id);
+        PatientBean patient = patientService.getPatient(id);
         model.addAttribute("patientBean", patient);
 
         log.info("Displaying patient/update page!");
@@ -150,16 +150,19 @@ public class PatientController {
 
         if (!dateValidator.isValid(patientBean.getDob())) {
 
-            log.error("{}, error date format", patientBean.getDob());
+            log.error("error date format for: {}", patientBean.getDob());
 
             result.rejectValue("dob", "error.badDateFormat",
-                    "Format accepté : MM-dd-yyyy!");
+                    "Format accepté : yyyy-MM-dd!");
 
             return "patient/update";
         }
 
-        PatientBean patient = patientProxy.updatePatient(patientBean);
-        return "redirect:/patient/list";
+        PatientBean patient = patientService.updatePatient(patientBean);
+
+        log.info("successfully updated patient: {}", patient);
+
+        return "redirect:patient/list";
     }
 
     /**
@@ -173,9 +176,16 @@ public class PatientController {
     @GetMapping("/patient/delete/{id}")
     public String deletePatient(Model model, @PathVariable long id) {
 
-        patientProxy.deletePatient(id);
+        PatientBean exist = patientService.getPatient(id);
 
-        log.error("{}, successfully deleted for id ", id);
+        if (exist == null) {
+            log.error("patient not exists for id: {}", id);
+            return "redirect:patient/list";
+        }
+
+        patientService.deletePatient(id);
+
+        log.info("successfully deleted for id: {}", id);
 
         return "redirect:/patient/list";
     }

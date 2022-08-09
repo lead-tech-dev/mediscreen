@@ -11,7 +11,7 @@ import java.util.Map;
  * microservice endPoints.
  *
  */
-@FeignClient(name = "patient", url = "localhost:8081")
+@FeignClient(name = "patient", url = "${patient.service.url}")
 public interface PatientProxy {
 
     /**
