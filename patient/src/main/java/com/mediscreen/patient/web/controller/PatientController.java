@@ -121,6 +121,13 @@ public class PatientController {
     public ResponseEntity<Void> deletePatient(@PathVariable("id") long id) {
         log.info("Deleting patient with id {}", id);
 
+        Optional<Patient> exists = patientService.getPatient(id);
+
+        if (exists.isEmpty()) {
+            log.error("Patient not exists with id {}", id);
+            throw new BadRequestException("Patient not exists!");
+        }
+
         patientService.deletePatient(id);
 
         log.info("Delete patient request success with id {}", id);
