@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+    <div class="title">
+        <h2>Update patient note/recommandations</h2>
+    </div>
+    <div class="content-area">
+        <div class="form">
+            <form action='#' method='post'>
+                <div class='field'>
+                    <input type="text"  name="firstname" placeholder="Nom..."  readOnly/>
+                </div>
+
+                <div class='field error'>
+                    <textarea cols="" rows="" placeholder='Notes/recommendations...'></textarea>
+                    <span class="error-message">This field is incorrect.</span>
+                </div>
+
+                <div class='field'>
+                    <input type="submit" value="Add"></input>
+                    <a href="" class="button">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>
