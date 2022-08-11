@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="common-header">
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+
+    <title>Mediscreen</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+          rel="stylesheet">
+
+
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <link href="/image/applie-touch-icon.png" rel="icon"/>
+</head>
+<body>
+
+<div th:fragment="header">
+    <header class="header-area">
+        <div class="container">
+            <div class="header-area__top">
+                <div class="left">
+                    <p><img src="/images/logo.png" alt="logo img" class="logo"/></p>
+                </div>
+                <div class="right">
+                    <div class="search">
+                        <input type="text" name="search"/>
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <p>Question ? <a href="0#">Contact us</a></p>
+                </div>
+            </div>
+            <div class="header-area__bottom">
+                <nav>
+                    <ul>
+                        <li><a href="0#" class="active">Home</a></li>
+                        <li><a href="0#">About</a></li>
+                        <li><a href="0#">Services</a></li>
+                        <li><a href="0#">Resources</a></li>
+                        <li><a href="0#">New blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
+<div th:fragment="footer">
+    <footer class="footer-area">
+        <div class="footer-area__social-icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-youtube"></i>
+            <i class="fa fa-instagram"></i>
+        </div>
+    </footer>
+</div>
+
+<div th:fragment="body-bottom-scripts">
+
+</div>
+
+</body>
+</html>

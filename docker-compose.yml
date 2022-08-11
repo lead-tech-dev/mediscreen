@@ -1,0 +1,66 @@
+version: '2'
+
+services:
+  clientui-microservice:
+    image: clientui-microservice
+    build:
+      context: clientui
+      dockerfile: Dockerfile
+    container_name: clientui-microservice
+    mem_limit: 512M
+    ports:
+      - 8080:8080
+    environment:
+      - patient.service.url=http://patient-microservice:8081
+    networks:
+      - web-server-bridge
+    depends_on:
+      - patient-microservice
+
+  patient-microservice:
+    image: patient-microservice
+    build:
+      context: patient
+      dockerfile: Dockerfile
+    restart: on-failure
+    container_name: patient-microservice
+    mem_limit: 512M
+    ports:
+      - 8081:8081
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url": "jdbc:mysql://mysqldb:3306/patientdb?useSSL=false",
+        "spring.datasource.username": "root",
+        "spring.datasource.password": "Makong57",
+        "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto": "update"
+    }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+    networks:
+      - web-server-bridge
+    depends_on:
+      - patient-mysql-db
+
+  patient-mysql-db:
+    image: mysql:5.7
+    container_name: mysqldb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=Makong57
+      - MYSQL_DATABASE=patientdb
+    ports:
+      - 3307:3306
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - web-server-bridge
+
+volumes:
+  db-data: {}
+
+networks:
+  web-server-bridge:
+    driver: bridge
