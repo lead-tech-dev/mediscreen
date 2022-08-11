@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+    <div class="title">
+        <h2>Add new patient</h2>
+    </div>
+    <div class="content-area">
+        <div class="form">
+            <form th:action="@{/patient/add}" method='post' th:object="${patientBean}">
+                <div class='field' th:classappend="${#fields.hasErrors('family')} ? 'error' : ''">
+                    <input type="text"  name="family" placeholder="Nom..." class="error"/>
+                    <span class="error-message"
+                          th:errors="*{family}" th:if="${#fields.hasErrors('family')}"/>
+                </div>
+                <div class='field'
+                     th:classappend="${#fields.hasErrors('given')} ? 'error' : ''">
+                    <input type="text" name="given" placeholder="Prénom..."/>
+                    <span class="error-message"
+                          th:errors="*{given}" th:if="${#fields.hasErrors('given')}"/>
+                </div>
+                <div class='field'  th:classappend="${#fields.hasErrors('dob')} ? 'error' : ''">
+                    <input type="text" name="dob" placeholder="Date de naissance..."/>
+                    <span class="error-message"
+                          th:errors="*{dob}" th:if="${#fields.hasErrors('dob')}"/>
+                </div>
+                <div class='field'>
+                    <div class="genre">
+                        <input type="radio" name="sex" value="H" id="homme" checked/> <label for="homme">H</label>
+
+                    </div>
+                    <div class="genre">
+                        <input type="radio" name="sex" value="F" id="femme"/> <label for="femme">F</label>
+
+                    </div>
+                </div>
+                <div class='field' th:classappend="${#fields.hasErrors('address')} ? 'error' : ''">
+                    <input type="text" name="address" placeholder="Adresse postale..."/>
+                    <span class="error-message"
+                          th:errors="*{address}" th:if="${#fields.hasErrors('address')}"/>
+                </div>
+                <div class='field' th:classappend="${#fields.hasErrors('phone')} ? 'error' : ''">
+                    <input type="text" name="phone" placeholder="Numéro de téléphone..."/>
+                    <span class="error-message"
+                          th:errors="*{phone}" th:if="${#fields.hasErrors('phone')}"/>
+                </div>
+                <div class='field'>
+                    <input type="submit" value="Create"/>
+                    <a th:href="@{/patient/list}" class="button">Cancel</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>
