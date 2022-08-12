@@ -4,7 +4,6 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import com.mediscreen.clientui.bean.PatientBean;
 import com.mediscreen.clientui.configuration.WireMockConfig;
 import org.hamcrest.collection.IsMapContaining;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -40,7 +39,7 @@ class PatientProxyTest {
     @DisplayName("addPatient, should return added patient")
     void whenAddPatient_thenAddedPatientShouldBeReturned() throws IOException {
         // GIVEN
-        PatientMocks.setupMockAddPatientResponse(wireMockServer);
+        Mocks.setupMockAddResponse(wireMockServer, "/patient/add");
         PatientBean expected = new PatientBean(
                 1L,
                 "Cartman",
@@ -61,7 +60,7 @@ class PatientProxyTest {
     @DisplayName("getAllPatient, should return patient list")
     void whenGetAllPatient_thenPatientsShouldBeReturned() throws IOException {
         // GIVEN
-        PatientMocks.setupMockGetAllPatientsResponse(wireMockServer);
+        Mocks.setupMockGetAllResponse(wireMockServer, "/patient/getAll/1");
 
         // WHEN
         Map<String, Object> responses = patientProxy.getAllPatient(1);
@@ -78,7 +77,7 @@ class PatientProxyTest {
     @DisplayName("getPatient, should return  patient for given id")
     void whenGetPatient_thenPatientShouldBeReturned() throws IOException {
         // GIVEN
-        PatientMocks.setupMockGetPatientResponse(wireMockServer);
+        Mocks.setupMockGetResponse(wireMockServer, "/patient/get/1");
         PatientBean expected = new PatientBean(
                 1L,
                 "TestNone",
@@ -99,7 +98,7 @@ class PatientProxyTest {
     @DisplayName("updatePatient, should return updated patient for given patient")
     void whenUpdatePatient_thenUpdatedPatientShouldBeReturned() throws IOException {
         // GIVEN
-        PatientMocks.setupMockUpdatePatientResponse(wireMockServer);
+        Mocks.setupMockUpdateResponse(wireMockServer, "/patient/update");
         PatientBean expected = new PatientBean(
                 1L,
                 "Ricky",
@@ -119,7 +118,7 @@ class PatientProxyTest {
     @Test
     @DisplayName("deletePatient, should delete given patient id")
     void whenDeletePatient_thenPatientShouldBeDelete() throws IOException {
-        PatientMocks.setupMockDeletePatientResponse(wireMockServer);
+        Mocks.setupMockDeleteResponse(wireMockServer, "/patient/delete/1");
 
         // WHEN
         PatientBean response = patientProxy.deletePatient(1);
