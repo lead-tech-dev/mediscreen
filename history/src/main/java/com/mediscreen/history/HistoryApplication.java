@@ -79,5 +79,9 @@ public class HistoryApplication implements CommandLineRunner {
                 )
 
         );
+
+        historyRepository.findAllByPatientId(4).forEach((history) -> {
+            logger.info("{}", history);
+        });
     }
 }

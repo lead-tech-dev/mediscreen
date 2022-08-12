@@ -3,7 +3,7 @@ package com.mediscreen.clientui.web.controller;
 import com.mediscreen.clientui.bean.PatientBean;
 import com.mediscreen.clientui.web.service.DateValidator;
 import com.mediscreen.clientui.web.service.PatientService;
-import com.mediscreen.clientui.service.DateValidatorUsingDateFormat;
+import com.mediscreen.clientui.web.service.impl.DateValidatorUsingDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +23,7 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    /**
-     * home. Method that display a home page.
-     *
-     * @return home view
-     */
 
-    @GetMapping("/")
-    public String home() {
-        log.info("Displaying home page!");
-        return "home";
-    }
 
     /**
      * getPatientList. Method that display first patient page.

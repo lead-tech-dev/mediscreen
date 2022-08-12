@@ -1,4 +1,4 @@
-package com.mediscreen.clientui.service;
+package com.mediscreen.clientui.web.service.impl;
 
 import com.mediscreen.clientui.web.service.DateValidator;
 

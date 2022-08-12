@@ -4,6 +4,7 @@ import com.mediscreen.clientui.bean.PatientBean;
 import com.mediscreen.clientui.proxies.PatientMocks;
 import com.mediscreen.clientui.proxies.PatientProxy;
 import com.mediscreen.clientui.web.service.PatientService;
+import com.mediscreen.clientui.web.service.impl.PatientServiceImpl;
 import org.hamcrest.collection.IsMapContaining;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

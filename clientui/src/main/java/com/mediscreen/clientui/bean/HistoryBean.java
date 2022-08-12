@@ -1,25 +1,22 @@
-package com.mediscreen.history.model;
+package com.mediscreen.clientui.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
- * The History class implements a history
- * entity.
+ * The HistoryBean class implements a bean of
+ * history entity.
  */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "history")
-public class History {
-
-    @Id
+public class HistoryBean {
     private String id;
 
     private long patientId;
@@ -27,5 +24,6 @@ public class History {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
+    @NotBlank
     private String note;
 }
