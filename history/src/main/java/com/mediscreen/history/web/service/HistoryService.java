@@ -3,6 +3,7 @@ package com.mediscreen.history.web.service;
 import com.mediscreen.history.model.History;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,7 +20,7 @@ public interface HistoryService {
      * @param id a patient id
      * @return a list of patient history
      */
-    Iterable<History> getAllHistoryByPatientId(long id);
+    List<History> getAllHistoryByPatientId(long id);
 
     /**
      * getHistory. Method that get one history from database.

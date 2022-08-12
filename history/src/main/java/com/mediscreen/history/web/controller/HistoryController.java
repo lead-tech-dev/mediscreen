@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 /**
@@ -74,7 +75,7 @@ public class HistoryController {
      * @return History object
      */
     @PostMapping("/add")
-    public ResponseEntity<History> addHistory(@RequestBody History history) {
+    public ResponseEntity<History> addHistory( @RequestBody @Valid History history) {
 
         log.info("Creating history with data: {}", history);
 
@@ -93,7 +94,7 @@ public class HistoryController {
      * @return History object
      */
     @PutMapping("/update")
-    public ResponseEntity<History> updateHistory(@RequestBody History history) {
+    public ResponseEntity<History> updateHistory(@RequestBody @Valid History history) {
 
         log.info("Updating history with data {}", history);
 
