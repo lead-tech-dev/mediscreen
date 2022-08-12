@@ -12,47 +12,47 @@ import static java.nio.charset.Charset.defaultCharset;
 import static org.springframework.util.StreamUtils.copyToString;
 
 public class Mocks {
-    public static void setupMockGetAllResponse(WireMockServer mockService, String url) throws IOException {
+    public static void setupMockGetAllResponse(WireMockServer mockService, String url, String response) throws IOException {
         mockService.stubFor(WireMock.get(WireMock.urlEqualTo(url))
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                         .withBody(
                                 copyToString(
-                                        Mocks.class.getClassLoader().getResourceAsStream("payload/get-patients-response.json"),
+                                        Mocks.class.getClassLoader().getResourceAsStream(response),
                                         defaultCharset()))));
     }
 
-    public static void setupMockGetResponse(WireMockServer mockService, String url) throws IOException {
+    public static void setupMockGetResponse(WireMockServer mockService, String url, String response) throws IOException {
         mockService.stubFor(WireMock.get(WireMock.urlEqualTo(url))
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                         .withBody(
                                 copyToString(
-                                        Mocks.class.getClassLoader().getResourceAsStream("payload/get-patient-response.json"),
+                                        Mocks.class.getClassLoader().getResourceAsStream(response),
                                         defaultCharset()))));
     }
 
-    public static void setupMockAddResponse(WireMockServer mockService, String url) throws IOException {
+    public static void setupMockAddResponse(WireMockServer mockService, String url, String response) throws IOException {
         mockService.stubFor(WireMock.post(WireMock.urlEqualTo(url))
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                         .withBody(
                                 copyToString(
-                                        Mocks.class.getClassLoader().getResourceAsStream("payload/add-patient-response.json"),
+                                        Mocks.class.getClassLoader().getResourceAsStream(response),
                                         defaultCharset()))));
     }
 
-    public static void setupMockUpdateResponse(WireMockServer mockService, String url) throws IOException {
+    public static void setupMockUpdateResponse(WireMockServer mockService, String url, String response) throws IOException {
         mockService.stubFor(WireMock.put(WireMock.urlEqualTo(url))
                 .willReturn(WireMock.aResponse()
                         .withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                         .withBody(
                                 copyToString(
-                                        Mocks.class.getClassLoader().getResourceAsStream("payload/update-patient-response.json"),
+                                        Mocks.class.getClassLoader().getResourceAsStream(response),
                                         defaultCharset()))));
     }
 

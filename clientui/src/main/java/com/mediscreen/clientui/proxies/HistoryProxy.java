@@ -33,7 +33,7 @@ public interface HistoryProxy {
      * @return a patient history list
      */
     @GetMapping( value = "/history/getAll/{id}")
-    Iterable<HistoryBean> getAllHistoryByPatientId(@PathVariable("id") long id);
+    List<HistoryBean> getAllHistoryByPatientId(@PathVariable("id") long id);
 
     /**
      * getHistory. Method that get one history from database.

@@ -3,6 +3,7 @@ package com.mediscreen.clientui.web.service;
 import com.mediscreen.clientui.bean.HistoryBean;
 import com.mediscreen.clientui.bean.PatientBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,7 +20,7 @@ public interface HistoryService {
      * @param id a patient id
      * @return a list of patient historyBean
      */
-    Iterable<HistoryBean> getAllHistoryPatientById(long id);
+    List<HistoryBean> getAllHistoryPatientById(long id);
 
 
     /**

@@ -39,7 +39,7 @@ class PatientProxyTest {
     @DisplayName("addPatient, should return added patient")
     void whenAddPatient_thenAddedPatientShouldBeReturned() throws IOException {
         // GIVEN
-        Mocks.setupMockAddResponse(wireMockServer, "/patient/add");
+        Mocks.setupMockAddResponse(wireMockServer, "/patient/add", "payload/patient/add-patient-response.json");
         PatientBean expected = new PatientBean(
                 1L,
                 "Cartman",
@@ -60,7 +60,7 @@ class PatientProxyTest {
     @DisplayName("getAllPatient, should return patient list")
     void whenGetAllPatient_thenPatientsShouldBeReturned() throws IOException {
         // GIVEN
-        Mocks.setupMockGetAllResponse(wireMockServer, "/patient/getAll/1");
+        Mocks.setupMockGetAllResponse(wireMockServer, "/patient/getAll/1", "payload/patient/get-patients-response.json");
 
         // WHEN
         Map<String, Object> responses = patientProxy.getAllPatient(1);
@@ -77,7 +77,7 @@ class PatientProxyTest {
     @DisplayName("getPatient, should return  patient for given id")
     void whenGetPatient_thenPatientShouldBeReturned() throws IOException {
         // GIVEN
-        Mocks.setupMockGetResponse(wireMockServer, "/patient/get/1");
+        Mocks.setupMockGetResponse(wireMockServer, "/patient/get/1", "payload/patient/get-patient-response.json");
         PatientBean expected = new PatientBean(
                 1L,
                 "TestNone",
@@ -98,7 +98,7 @@ class PatientProxyTest {
     @DisplayName("updatePatient, should return updated patient for given patient")
     void whenUpdatePatient_thenUpdatedPatientShouldBeReturned() throws IOException {
         // GIVEN
-        Mocks.setupMockUpdateResponse(wireMockServer, "/patient/update");
+        Mocks.setupMockUpdateResponse(wireMockServer, "/patient/update", "payload/patient/update-patient-response.json");
         PatientBean expected = new PatientBean(
                 1L,
                 "Ricky",

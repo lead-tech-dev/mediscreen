@@ -23,10 +23,11 @@ import java.util.Random;
 import java.util.UUID;
 
 
-@SpringBootTest(classes = ClientuiApplication.class, properties = "server.port=8081")
+@SpringBootTest(classes = ClientuiApplication.class)
 @WebAppConfiguration
 @ExtendWith(MockitoExtension.class)
 public abstract class AbstractTest {
+
   protected MockMvc mvc;
   @Autowired
   WebApplicationContext webApplicationContext;

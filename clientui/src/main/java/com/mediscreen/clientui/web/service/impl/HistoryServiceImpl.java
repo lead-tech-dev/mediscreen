@@ -6,6 +6,7 @@ import com.mediscreen.clientui.web.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,7 +23,7 @@ public class HistoryServiceImpl implements HistoryService {
      * {@inheritDoc}
      */
     @Override
-    public Iterable<HistoryBean> getAllHistoryPatientById(long id) {
+    public List<HistoryBean> getAllHistoryPatientById(long id) {
         return historyProxy.getAllHistoryByPatientId(id);
     }
 

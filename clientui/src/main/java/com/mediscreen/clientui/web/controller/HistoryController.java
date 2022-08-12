@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -50,7 +51,7 @@ public class HistoryController {
             return "patient/list";
         }
 
-        Iterable<HistoryBean> histories = historyService.getAllHistoryPatientById(id);
+        List<HistoryBean> histories = historyService.getAllHistoryPatientById(id);
 
         model.addAttribute("patient", patientBean);
         model.addAttribute("histories", histories);
@@ -74,7 +75,7 @@ public class HistoryController {
 
             log.error("Patient not found!");
 
-            return "patient/list";
+            return "redirect:/patient/list";
         }
         model.addAttribute("patientId", patientBean.getId());
         model.addAttribute("family", patientBean.getFamily());
@@ -110,7 +111,7 @@ public class HistoryController {
 
         HistoryBean added = historyService.addHistory(historyBean);
 
-        log.info("successfully patient added, {}", added);
+        log.info("successfully history added, {}", added);
 
         return "redirect:/patient/" + added.getPatientId() + "/history/list";
     }
@@ -130,13 +131,13 @@ public class HistoryController {
         PatientBean patientBean = patientService.getPatient(patientId);
 
         if (patientBean == null) {
-            return "patient/list";
+            return "redirect:/patient/" + patientId + "/history/list";
         }
 
         HistoryBean historyBean = historyService.getHistory(historyId);
 
         if (historyBean == null) {
-            return "history/list";
+            return "redirect:/patient/" + patientId + "/history/list";
         }
 
         model.addAttribute("family", patientBean.getFamily());
@@ -192,13 +193,13 @@ public class HistoryController {
         PatientBean patientBean = patientService.getPatient(patientId);
 
         if (patientBean == null) {
-            return "patient/list";
+            return "redirect:/patient/" + patientId + "/history/list";
         }
 
         HistoryBean historyBean = historyService.getHistory(historyId);
 
         if (historyBean == null) {
-            return "history/list";
+            return "redirect:/patient/" + patientId + "/history/list";
         }
 
         historyService.deleteHistory(historyId);
