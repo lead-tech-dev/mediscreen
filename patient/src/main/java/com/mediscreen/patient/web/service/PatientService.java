@@ -16,7 +16,7 @@ public interface PatientService {
      * addPatient. Method that add given patient in database.
      *
      * @param patient a patient
-     * @return an PatientBean
+     * @return a Patient
      */
     Patient addPatient(Patient patient);
 
@@ -32,7 +32,7 @@ public interface PatientService {
      * getPatient. Method that get one patient from database.
      *
      * @param id a patient id
-     * @return PatientBean
+     * @return Patient
      */
     Optional<Patient> getPatient(long id);
 
@@ -48,7 +48,7 @@ public interface PatientService {
      * in database.
      *
      * @param patient a patient
-     * @return PatientBean
+     * @return Patient
      */
     Patient updatePatient(Patient patient);
 }

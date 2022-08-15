@@ -42,20 +42,6 @@ class PatientControllerTest extends AbstractTest{
 
 
     @Test
-    @DisplayName("home should display home page")
-    void home_shouldDisplayHomePage() throws Exception {
-        // GIVEN
-        String uri = "/";
-
-        // WHEN
-        // THEN
-        this.mvc.perform(MockMvcRequestBuilders.get(uri))
-                .andExpect(view().name("home"))
-                .andExpect(status().isOk())
-                .andDo(print());
-    }
-
-    @Test
     @DisplayName("getPatientList should return patient list")
     void getPatientList_shouldReturnFirstPagePatientList() throws Exception {
         // GIVEN
@@ -260,10 +246,6 @@ class PatientControllerTest extends AbstractTest{
                 .andExpect(view().name("redirect:patient/list"))
                 .andExpect(status().is3xxRedirection())
                 .andDo(print());
-    }
-
-    @Test
-    void deletePatient() {
     }
 
     @Test

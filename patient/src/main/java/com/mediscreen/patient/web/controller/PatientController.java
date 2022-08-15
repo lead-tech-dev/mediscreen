@@ -57,11 +57,14 @@ public class PatientController {
      */
     @GetMapping("/get/{id}")
     public ResponseEntity<Patient> getPatient(@PathVariable("id") long id) {
+
         log.info("Getting patient with id {}", id);
 
         Optional<Patient> patient = patientService.getPatient(id);
         if (patient.isEmpty()) {
+
             log.error("Bad request exception: Patient not found!");
+
             throw new BadRequestException("Patient not found!");
         }
 
@@ -79,11 +82,14 @@ public class PatientController {
      */
     @PutMapping("/update")
     public ResponseEntity<Patient> updatePatient(@RequestBody Patient patient) {
+
         log.info("Updating patient with data {}", patient);
 
         Optional<Patient> exists = patientService.getPatient(patient.getId());
         if (exists.isEmpty()) {
+
             log.error("Bad request exception: Patient not found!");
+
             throw new BadRequestException("Patient not found!");
         }
         Patient updated = patientService.updatePatient(patient);
@@ -102,7 +108,8 @@ public class PatientController {
      */
     @PostMapping("/add")
     public ResponseEntity<Patient> addPatient(@RequestBody @Valid Patient patient) {
-        log.info("Creating patient with patient {}", patient);
+
+        log.info("Creating patient with data: {}", patient);
 
         Patient added = patientService.addPatient(patient);
 
@@ -119,12 +126,15 @@ public class PatientController {
      */
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable("id") long id) {
+
         log.info("Deleting patient with id {}", id);
 
         Optional<Patient> exists = patientService.getPatient(id);
 
         if (exists.isEmpty()) {
+
             log.error("Patient not exists with id {}", id);
+
             throw new BadRequestException("Patient not exists!");
         }
 

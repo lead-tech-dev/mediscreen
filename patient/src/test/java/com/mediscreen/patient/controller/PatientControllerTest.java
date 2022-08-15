@@ -168,7 +168,7 @@ class PatientControllerTest extends AbstractTest {
 
     @Test
     @DisplayName("deletePatient should delete patient for given patient id")
-    void deletePatient_ShouldReturn400StatusCode_ForGivenPatientNotExistPatientId() throws Exception {
+    void deletePatient_ShouldReturn400StatusCode_ForGivenNotExistPatientId() throws Exception {
         // GIVEN
 
         // WHEN
