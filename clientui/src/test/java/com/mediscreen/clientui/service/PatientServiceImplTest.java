@@ -1,11 +1,9 @@
 package com.mediscreen.clientui.service;
 
 import com.mediscreen.clientui.bean.PatientBean;
-import com.mediscreen.clientui.proxies.PatientMocks;
 import com.mediscreen.clientui.proxies.PatientProxy;
-import com.mediscreen.clientui.web.service.PatientService;
+import com.mediscreen.clientui.web.service.impl.PatientServiceImpl;
 import org.hamcrest.collection.IsMapContaining;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -21,7 +19,6 @@ import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @Tag("PatientServiceImplTest")

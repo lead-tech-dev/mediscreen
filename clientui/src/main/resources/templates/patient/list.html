@@ -30,6 +30,7 @@
                     <td th:text="${patient.phone}"/>
                     <td>
                         <a th:href="${'/patient/updateForm/' + {patient.id}}"><i class="fa fa-edit"></i></a>
+                        <a th:href="${'/patient/' + {patient.id} + '/history/list'}"><i class="fa fa-sticky-note-o"></i></a>
                         <a th:href="${'/patient/delete/' + {patient.id}}"><i class="fa fa-trash"></i></a>
                     </td>
 

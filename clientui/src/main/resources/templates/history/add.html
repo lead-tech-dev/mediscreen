@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+    <div class="title">
+        <h2>Add patient note/recommandations</h2>
+    </div>
+    <div class="content-area">
+        <div class="form">
+            <form th:action='@{/history/add}' method='post' th:object="${historyBean}">
+
+                <div class='field'>
+                    <input type="hidden"  name="patientId" th:value="${patientId}" />
+                    <input type="text"  name="family" th:value="${family}"  readOnly/>
+                </div>
+
+                <div class='field' th:classappend="${#fields.hasErrors('note')} ? 'error' : ''">
+                    <textarea cols="" rows="" name="note" placeholder='Notes/recommendations...'></textarea>
+                    <span class="error-message"
+                          th:errors="*{note}" th:if="${#fields.hasErrors('note')}"/>
+                </div>
+
+                <div class='field'>
+                    <input type="submit" value="Add"/>
+                    <a th:href="@{'/patient/' + ${patientId} + '/history/list'}" class="button">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>

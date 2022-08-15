@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+    <div class="inner">
+        <div class="title">
+            <h2>Note/recommandations</h2>
+        </div>
+        <div class="content-area">
+            <div class="content-head">
+                <a th:href="${'/patient/' + {patient.id} + '/history/addForm'}" class="btn-primary"><i class="fa fa-plus"></i>  Add note</a>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Date </th>
+                    <th>Note</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="history: ${histories}">
+                    <td th:text="${#strings.substring(history.note,0,25)}"/>
+                    <td th:text="${#dates.format(history.date, 'dd-MM-yyyy')}"/>
+                    <td>
+                        <a th:href="${'/patient/' + {patient.id} + '/history/' + {history.id} + '/updateForm'}"><i class="fa fa-edit"></i></a>
+                        <a th:href="${'/patient/' + {patient.id} + '/history/delete/' + {history.id}}"><i class="fa fa-trash"></i></a>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>
