@@ -1,0 +1,4 @@
+com\mediscreen\history\controller\HistoryControllerTest.class
+com\mediscreen\history\HistoryApplicationTests.class
+com\mediscreen\history\controller\AbstractTest.class
+com\mediscreen\history\service\HistoryServiceImplTest.class

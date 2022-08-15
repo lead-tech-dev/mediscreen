@@ -1,0 +1,9 @@
+com\mediscreen\history\web\service\HistoryService.class
+com\mediscreen\history\web\controller\HistoryController.class
+com\mediscreen\history\web\exception\BadRequestException.class
+com\mediscreen\history\web\service\impl\HistoryServiceImpl.class
+com\mediscreen\history\model\History.class
+com\mediscreen\history\repository\HistoryRepository.class
+com\mediscreen\history\web\exception\ErrorMessage.class
+com\mediscreen\history\web\exception\ControllerExceptionHandler.class
+com\mediscreen\history\HistoryApplication.class

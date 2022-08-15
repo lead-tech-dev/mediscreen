@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HistoryApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">history</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.history</a> &gt; <span class="el_source">HistoryApplication.java</span></div><h1>HistoryApplication.java</h1><pre class="source lang-java linenums">package com.mediscreen.history;
+
+import com.mediscreen.history.model.History;
+import com.mediscreen.history.repository.HistoryRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+@SpringBootApplication
+<span class="fc" id="L17">public class HistoryApplication implements CommandLineRunner {</span>
+
+<span class="fc" id="L19">    private final Logger logger = LoggerFactory.getLogger(HistoryApplication.class);</span>
+
+    @Autowired
+    private HistoryRepository historyRepository;
+
+    public static void main(String[] args) {
+<span class="nc" id="L25">        SpringApplication.run(HistoryApplication.class, args);</span>
+<span class="nc" id="L26">    }</span>
+
+    @Override
+    public void run(String... args) throws Exception {
+<span class="fc" id="L30">        logger.info(&quot;Start !&quot;);</span>
+<span class="fc" id="L31">        historyRepository.deleteAll();</span>
+<span class="fc" id="L32">        historyRepository.saveAll(</span>
+<span class="fc" id="L33">                List.of(</span>
+                        new History(
+                                &quot;6177a31824f1d205e0b0692d&quot;,
+                                1L,
+<span class="fc" id="L37">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-02-04T07:04:03.321Z&quot;),</span>
+                                &quot;Patient states that they are 'feeling terrific' Weight at or below recommended level&quot;),
+                        new History(
+                                &quot;6177a3648207e0587345067a&quot;,
+                                2L,
+<span class="fc" id="L42">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-05-10T07:04:03.321Z&quot;),</span>
+                                &quot;Patient states that they are feeling a great deal of stress at work Patient also complains that their hearing seems Abnormal as of late&quot;),
+                        new History(
+                                &quot;6177a39b665edf352cf74f90&quot;,
+                                2L,
+<span class="fc" id="L47">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-08-01T07:04:03.321Z&quot;),</span>
+                                &quot;Patient states that they have had a Reaction to medication within last 3 months Patient also complains that their hearing continues to be problematic&quot;),
+                        new History(
+                                &quot;6178f9e3c2533871717abaf2&quot;,
+                                3L,
+<span class="fc" id="L52">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-10-27T07:04:03.321Z&quot;),</span>
+                                &quot;Patient states that they are short term Smoker&quot;),
+                        new History(
+                                &quot;6178fa80b2162e1fd560e33f&quot;,
+                                3L,
+<span class="fc" id="L57">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-10-27T07:04:03.321Z&quot;),</span>
+                                &quot;Patient states that they quit within last year Patient also complains that of Abnormal breathing spells Lab reports Cholesterol LDL high&quot;),
+                        new History(
+                                &quot;618244a55ec6eb500c8b5be0&quot;,
+                                4L,
+<span class="fc" id="L62">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+                                &quot;Patient states that walking up stairs has become difficult Patient also complains that they are having shortness of breath Lab results indicate Antibodies present elevated Reaction to medication&quot;),
+                        new History(
+                                &quot;618273e087deb21060318688&quot;,
+                                4L,
+<span class="fc" id="L67">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+                                &quot;Patient states that they are experiencing back pain when seated for a long time&quot;),
+                        new History(
+                                &quot;618244a55eb6eb600c8b5be0&quot;,
+                                4L,
+<span class="fc" id="L72">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+                                &quot;Patient states that they are a short term Smoker Hemoglobin A1C above recommended level&quot;),
+                        new History(
+                                &quot;618273e087def21060318688&quot;,
+                                4L,
+<span class="fc" id="L77">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+                                &quot;Patient states that Body Height, Body Weight, Cholesterol, Dizziness and Reaction&quot;)
+                )
+
+        );
+
+<span class="fc" id="L83">        historyRepository.findAllByPatientId(4).forEach((history) -&gt; {</span>
+<span class="fc" id="L84">            logger.info(&quot;{}&quot;, history);</span>
+<span class="fc" id="L85">        });</span>
+<span class="fc" id="L86">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
