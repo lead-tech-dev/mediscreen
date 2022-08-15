@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HistoryServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">history</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.history.web.service.impl</a> &gt; <span class="el_source">HistoryServiceImpl.java</span></div><h1>HistoryServiceImpl.java</h1><pre class="source lang-java linenums">package com.mediscreen.history.web.service.impl;
+
+import com.mediscreen.history.model.History;
+import com.mediscreen.history.repository.HistoryRepository;
+import com.mediscreen.history.web.service.HistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * HistoryServiceImpl. class that implement
+ * history business logic
+ */
+@Service
+<span class="fc" id="L17">public class HistoryServiceImpl implements HistoryService {</span>
+
+    @Autowired
+    private HistoryRepository historyRepository;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List&lt;History&gt; getAllHistoryByPatientId(long id) {
+<span class="fc" id="L27">        return historyRepository.findAllByPatientId(id);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Optional&lt;History&gt; getHistory(String id) {
+<span class="fc" id="L35">        return historyRepository.findById(id);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public History addHistory(History history) {
+<span class="fc" id="L43">        return historyRepository.save(history);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public History updateHistory(History history) {
+<span class="fc" id="L51">        return historyRepository.save(history);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void deleteHistory(String id) {
+<span class="fc" id="L59">        historyRepository.deleteById(id);</span>
+<span class="fc" id="L60">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
