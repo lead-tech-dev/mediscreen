@@ -1,0 +1,14 @@
+[
+  {
+  "id": "618273e087def21060318688",
+  "patientId": 1,
+  "date":"2021-11-02T23:00:00.518Z",
+  "note": "Patient states that they are a short term Smoker Hemoglobin A1C above recommended level"
+  },
+  {
+    "id": "618273e087def21060318688",
+    "patientId": 2,
+    "date":"2021-11-02T23:00:00.518Z",
+    "note": "Patient states that they are a short term Smoker Hemoglobin A1C above recommended level"
+  }
+]

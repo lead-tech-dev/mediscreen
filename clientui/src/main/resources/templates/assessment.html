@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+  <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+  <div class="title">
+    <a th:href="@{/patient/list}"><i class='fa fa-arrow-left'></i></a>
+    <h2>Patient assessment</h2>
+  </div>
+  <div class="content-area">
+    <div class='assessment-inner'>
+      <h3>Nom: <span>Tella</span></h3>
+      <h3>Prénom: <span>Eric</span></h3>
+      <h3>Age: <span>23/02/81</span></h3>
+      <h3> L'évaluation du diabète est: <span class='borderline'>risque limité (Borderline)</span></h3>
+    </div>
+  </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>

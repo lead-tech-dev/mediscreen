@@ -77,7 +77,6 @@ services:
   history-mongo-db:
     image: mongo
     container_name: docker-mongo
-    user: root
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password

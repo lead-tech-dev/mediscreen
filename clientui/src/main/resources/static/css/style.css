@@ -45,6 +45,21 @@ input:focus {
     outline: 0;
 }
 
+.search {
+    display: flex;
+}
+.search input {
+    height: 25px;
+}
+.search i {
+    background-color: hsl(var(--clr-blue));
+    color: hsl(var(--clr-white));
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-left: 2px;
+    line-height: 20px;
+}
+
 .table {
     width: 100%;
     text-align: center;
@@ -106,7 +121,7 @@ input:focus {
     background-color: hsl(var(--clr-blue));
     border: none;
     color: hsl(var(--clr-white));
-    padding: 0.6rem 1.2rem;
+    padding: 0.4rem 1.2rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -121,7 +136,7 @@ input:focus {
     width: 40%;
 }
 .form .field {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     height: 40px;
     width: 100%;
 }
@@ -135,7 +150,7 @@ input:focus {
     display: none;
 }
 .form .field.error {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .form .field.error .error-message {
     display: inline-block;
@@ -161,8 +176,8 @@ input:focus {
 .form .field:last-child a:hover {
     background-color: hsl(var(--clr-black));
 }
-.form .field:nth-child(2) {
-    height: 235px;
+.form .field.textarea {
+    height: 200px;
 }
 
 input {
@@ -210,7 +225,7 @@ input[type=radio]:checked {
 
 textarea {
     width: 100%;
-    height: 200px;
+    height: 100%;
     border: 1px solid hsl(var(--clr-light-grey));
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
@@ -248,20 +263,6 @@ textarea {
     display: flex;
     justify-content: space-between;
     padding: 40px 5vw;
-}
-.header-area__top .right .search {
-    display: flex;
-}
-.header-area__top .right .search input {
-    height: 25px;
-}
-.header-area__top .right .search i {
-    background-color: hsl(var(--clr-blue));
-    color: hsl(var(--clr-white));
-    padding: 2px 4px;
-    border-radius: 4px;
-    margin-left: 2px;
-    line-height: 20px;
 }
 .header-area__top .right p {
     color: hsl(var(--clr-blue));
@@ -360,9 +361,46 @@ textarea {
     width: 72%;
     border: 2px solid hsl(var(--clr-blue));
 }
+.patient-area .title i {
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: hsl(var(--clr-red));
+    color: hsl(var(--clr-white));
+    text-align: center;
+    margin-right: 20px;
+}
+.patient-area .content-area {
+    min-height: 45vh;
+}
 .patient-area .content-area .content-head {
-    float: right;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     margin-bottom: 10px;
+}
+.patient-area .content-area .content-head .search {
+    grid-column: 3/5;
+}
+.patient-area .content-area .content-head .search input {
+    height: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.patient-area .content-area .content-head .search i {
+    background-color: hsl(var(--clr-blue));
+    color: hsl(var(--clr-white));
+    align-self: center;
+    text-align: center;
+    line-height: 45px;
+    width: 45px;
+    height: 50px;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.patient-area .content-area .content-head a {
+    grid-column: -1;
 }
 .patient-area .content-area i {
     height: 35px;
@@ -373,14 +411,44 @@ textarea {
     border-radius: 50%;
     margin-right: 4px;
 }
+.patient-area .content-area i.fa-plus {
+    color: hsl(var(--clr-red));
+}
 .patient-area .content-area i.fa-trash {
-    color: red;
+    color: hsl(var(--clr-red));
 }
 .patient-area .content-area i.fa-edit {
     color: hsl(var(--clr-green));
 }
 .patient-area .content-area i.fa-sticky-note-o {
     color: hsl(var(--clr-blue));
+}
+.patient-area .content-area i.fa-file {
+    color: hsl(var(--clr-black));
+}
+.patient-area .content-area .assessment-inner {
+    display: inline-block;
+    padding: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.patient-area .content-area .assessment-inner h3 {
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.patient-area .content-area .assessment-inner h3 span {
+    font-style: italic;
+}
+.patient-area .content-area .assessment-inner h3 span.danger {
+    color: hsl(var(--clr-red));
+}
+.patient-area .content-area .assessment-inner h3 span.none {
+    color: hsl(var(--clr-green));
+}
+.patient-area .content-area .assessment-inner h3 span.borderline {
+    color: rgb(176, 176, 90);
+}
+.patient-area .content-area .assessment-inner h3 span.early-onset {
+    color: hsl(var(--clr-red));
 }
 
 .footer-area {
