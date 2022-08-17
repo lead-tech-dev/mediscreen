@@ -131,7 +131,7 @@ class AssessmentServiceImplTest {
                 "618273e087def21060318688",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière");
+                "Le patient déclare qu'il est fumeur occasionnel");
 
         when(historyProxy.getAllHistoryByPatientId(history1.getPatientId())).thenReturn(List.of(history1, history2, history3, history4));
 
@@ -216,7 +216,7 @@ class AssessmentServiceImplTest {
                 "618273e087def21060318688",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière");
+                "Le patient déclare qu'il est fumeur occasionnel");
 
 
         HistoryBean history5 = new HistoryBean(
@@ -277,7 +277,7 @@ class AssessmentServiceImplTest {
                 "618273e087def21060318688",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière");
+                "Le patient déclare qu'il est fumeur occasionnel");
 
 
         HistoryBean history5 = new HistoryBean(
@@ -332,7 +332,7 @@ class AssessmentServiceImplTest {
                 "618273e087def21060318688",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière");
+                "Le patient déclare qu'il est fumeur occasionnel");
 
 
         HistoryBean history5 = new HistoryBean(

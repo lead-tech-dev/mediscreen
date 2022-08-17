@@ -12,12 +12,18 @@
             <h2>Patient managment</h2>
         </div>
         <div class="content-area">
+            <form method="get" th:action="@{/patient/search}">
             <div class="content-head">
-                <div class="search">
-                    <input type="text" name="search" placeholder="Search by patient name..."/>
-                    <i class="fa fa-search"></i>
-                </div>
+
+                    <div class="search">
+                        <input type="text" name="keyword" placeholder="Search by patient name..."/>
+                        <button type="submit" class="">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
                 <a th:href="@{/patient/addForm}" class="btn-primary"><i class="fa fa-plus"></i>  New patient</a>
+            </form>
             </div>
             <table class="table">
                 <tr>

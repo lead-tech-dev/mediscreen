@@ -4,6 +4,7 @@ import com.mediscreen.clientui.bean.PatientBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +14,16 @@ import java.util.Map;
  */
 @FeignClient(name = "patient", url = "${patient.service.url}")
 public interface PatientProxy {
+
+    /**
+     * searchPatient. Method that get patient from patient
+     * microservice.
+     *
+     * @param keyword a keyword
+     * @return an PatientBean list
+     */
+    @GetMapping( value = "/patient/search/{keyword}")
+    List<PatientBean> searchPatient(@PathVariable("keyword") String keyword);
 
     /**
      * addPatient. Method that add given patient in database.

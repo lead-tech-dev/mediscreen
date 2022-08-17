@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -60,5 +61,13 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Patient updatePatient(Patient patient) {
         return patientRepository.save(patient);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<Patient> searchPatient(String keyword) {
+        return patientRepository.findPatientByKeyword(keyword);
     }
 }

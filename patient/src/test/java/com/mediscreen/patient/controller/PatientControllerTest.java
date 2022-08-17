@@ -6,6 +6,7 @@ import org.hamcrest.collection.IsMapContaining;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -41,6 +42,23 @@ class PatientControllerTest extends AbstractTest {
         assertTrue(data.size() > 0);
         assertThat(data, IsMapContaining.hasEntry("patients", data.get("patients")));
         assertThat(data, IsMapContaining.hasEntry("totalPages", 2));
+    }
+
+    @Test
+    @DisplayName("getPatientByKeyword should return patient list for given keyword")
+    void getPatientByKeyword_ShouldReturnPatientList_ForGivenKeyword() throws Exception {
+        // GIVEN
+
+        // WHEN
+        MvcResult mvcResult = this.mvc.perform(MockMvcRequestBuilders.get(uri + "/search/danger")
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        String content = mvcResult.getResponse().getContentAsString();
+        List<Patient> data = super.mapFromJson(content, List.class);
+
+        // THEN
+        assertEquals(200, mvcResult.getResponse().getStatus());
+        assertTrue(data.size() > 0);
+
     }
 
     @Test

@@ -65,6 +65,28 @@ class PatientServiceImplTest {
     }
 
     @Test
+    @DisplayName("searchPatient should return patient list for given keyword")
+    void searchPatient_ShouldReturnPatientList_ForGivenKeyword() {
+        // GIVEN
+        Patient expected = new Patient(
+                1L,
+                "Cartman",
+                "Eric",
+                new Date(),
+                "M",
+                "7 Rue Lucien Deneau",
+                "999-444-9999");
+        when(patientRepository.findPatientByKeyword("Cartman")).thenReturn(List.of(expected));
+
+        // WHEN
+        List<Patient> results = patientService.searchPatient("Cartman");
+
+        // THEN
+        verify(patientRepository, times(1)).findPatientByKeyword("Cartman");
+        Assertions.assertThat(results).contains(expected);
+    }
+
+    @Test
     @DisplayName("addPatient should return added patient for given patient")
     void addPatient_ShouldReturnAddedPatient_ForGivenPatient() {
         // GIVEN

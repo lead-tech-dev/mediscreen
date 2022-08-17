@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <head th:replace="common/header :: common-header"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+
+<div class="patient-area">
+    <div class="inner">
+        <div class="title">
+            <a th:href="@{/patient/list}"><i class='fa fa-arrow-left'></i></a>
+            <h2>Patient search result</h2>
+        </div>
+        <div class="content-area" th:if="${!patients.empty}">
+            <div class="content-head">
+                    <div class="search">
+                    </div>
+                <a th:href="@{/patient/addForm}" class="btn-primary"><i class="fa fa-plus"></i>  New patient</a>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Numéro de téléphone</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="patient: ${patients}">
+                    <td th:text="${patient.family}"/>
+                    <td th:text="${patient.given}"/>
+                    <td th:text="${patient.dob}"/>
+                    <td th:text="${patient.phone}"/>
+                    <td>
+                        <a th:href="${'/patient/updateForm/' + {patient.id}}"><i class="fa fa-edit"></i></a>
+                        <a th:href="${'/patient/' + {patient.id} + '/history/list'}"><i class="fa fa-sticky-note-o"></i></a>
+                        <a th:href="${'/assess/' + {patient.id}}"><i class="fa fa-file"></i></a>
+                        <a th:href="${'/patient/delete/' + {patient.id}}"><i class="fa fa-trash"></i></a>
+                    </td>
+
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="content-area" th:if="${patients.empty}">
+            <div class="content-head">
+                <div class="search">
+                </div>
+                <a th:href="@{/patient/addForm}" class="btn-primary"><i class="fa fa-plus"></i>  New patient</a>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Numéro de téléphone</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+            <div style="text-align: center; margin-top: 20px; font-size: 25px">
+                <h3>No result available</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: footer"/>
+</body>
+</html>

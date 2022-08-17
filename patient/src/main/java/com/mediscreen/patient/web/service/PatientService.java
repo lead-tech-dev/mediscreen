@@ -3,6 +3,7 @@ package com.mediscreen.patient.web.service;
 import com.mediscreen.patient.model.Patient;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -51,4 +52,13 @@ public interface PatientService {
      * @return Patient
      */
     Patient updatePatient(Patient patient);
+
+    /**
+     * searchPatient. Method that search patient
+     * in database.
+     *
+     * @param keyword a keyword
+     * @return Patient list
+     */
+    List<Patient> searchPatient(String keyword);
 }

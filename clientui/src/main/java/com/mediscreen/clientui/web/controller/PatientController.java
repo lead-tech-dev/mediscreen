@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,6 +29,27 @@ public class PatientController {
     private PatientService patientService;
 
 
+    /**
+     * searchPatient. Method that display search result.
+     *
+     * @param model       a model
+     * @param keyword a keyword
+     * @return result view
+     */
+    @GetMapping("/patient/search")
+    public String searchPatient(Model model, @RequestParam(value = "keyword", defaultValue = "") String keyword) {
+
+        log.info("Getting search keyword: {}", keyword);
+
+       List<PatientBean> patients = patientService.searchPatient(keyword);
+        System.out.println(patients);
+
+       model.addAttribute("patients", patients);
+
+        log.info("search response successfully with data: {}", patients);
+
+        return "result";
+    }
 
     /**
      * getPatientList. Method that display first patient page.
