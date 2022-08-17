@@ -25,8 +25,8 @@ VALUES (3, 'TestInDanger', 'Test', '2004-06-18 05:43:32', 'M', '3 Club Road', '3
 INSERT INTO patient (id, family, given, dob, sex, address, phone)
 VALUES (4, 'TestEarlyOnset', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');
 INSERT INTO patient (id, family, given, dob, sex, address, phone)
-VALUES (5, 'TestEarlyOnset', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');
+VALUES (5, 'TestNone', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');
 INSERT INTO patient (id, family, given, dob, sex, address, phone)
-VALUES (6, 'TestEarlyOnset', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');
+VALUES (6, 'TestNone', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');
 INSERT INTO patient (id, family, given, dob, sex, address, phone)
-VALUES (7, 'TestEarlyOnset', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');
+VALUES (7, 'TestNone', 'Test', '2002-06-28 10:11:27', 'F', '4 Valley Dr', '400-555-6666');

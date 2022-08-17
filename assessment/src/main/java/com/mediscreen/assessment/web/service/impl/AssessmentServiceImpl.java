@@ -45,21 +45,13 @@ public class AssessmentServiceImpl implements AssessmentService {
 
        if (triggersNumber == 2 && age > 30 ) {
             assessment.setAssessment("Risque limité (Borderline)");
-        } else if (triggersNumber == 4 || triggersNumber == 3 || triggersNumber == 6) {
-            if (women && triggersNumber == 4
+        } else  if (women && triggersNumber == 4
                     || men && triggersNumber == 3
                     || age > 30 && triggersNumber == 6) {
                 assessment.setAssessment("Danger (In Danger)");
-            } else {
-                assessment.setAssessment("NA");
-            }
-        } else if (triggersNumber == 5 || triggersNumber == 7 || triggersNumber >= 8) {
-           if (men && age < 30 && triggersNumber == 5
+        } else if (men && age < 30 && triggersNumber == 5
                    || women && age < 30 && triggersNumber == 7 || age > 30 && triggersNumber >= 8) {
                assessment.setAssessment("Apparition précoce (Early onset)");
-           }else {
-               assessment.setAssessment("NA");
-           }
        }
        else {
            assessment.setAssessment("Aucun risque (None)");
@@ -76,7 +68,9 @@ public class AssessmentServiceImpl implements AssessmentService {
                 "Taille",
                 "Poids",
                 "Fumeur",
+                "Fumer",
                 "Anormal",
+                "Anormale",
                 "Cholestérol",
                 "Vertige"
         );

@@ -22,6 +22,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * HistoryController. class that manage
+ * request/response logic of user history.
+ */
 @Controller
 public class HistoryController {
 

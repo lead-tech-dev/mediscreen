@@ -13,10 +13,10 @@
   </div>
   <div class="content-area">
     <div class='assessment-inner'>
-      <h3>Nom: <span>Tella</span></h3>
-      <h3>Prénom: <span>Eric</span></h3>
-      <h3>Age: <span>23/02/81</span></h3>
-      <h3> L'évaluation du diabète est: <span class='borderline'>risque limité (Borderline)</span></h3>
+      <h3>Nom: <span th:text="${assessment.family}"/></h3>
+      <h3>Prénom: <span th:text="${assessment.given}"/></h3>
+      <h3>Age: <span th:text="${assessment.birthdate} + ' ans'"/></h3>
+      <h3> L'évaluation du diabète est: <span th:classappend="${#strings.toLowerCase(#strings.replace(#strings.replace(#strings.arraySplit(assessment.assessment,' ')[#arrays.length(#strings.arraySplit(assessment.assessment, ' ')) - 1],'(',' '),')',' '))}" th:text="${assessment.assessment}"/></h3>
     </div>
   </div>
 </div>

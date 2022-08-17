@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Map;
 
+/**
+ * PatientController. class that manage
+ * request/response logic of user patient.
+ */
 @Controller
 public class PatientController {
 

@@ -447,7 +447,7 @@ textarea {
 .patient-area .content-area .assessment-inner h3 span.borderline {
     color: rgb(176, 176, 90);
 }
-.patient-area .content-area .assessment-inner h3 span.early-onset {
+.patient-area .content-area .assessment-inner h3 span.onset {
     color: hsl(var(--clr-red));
 }
 
