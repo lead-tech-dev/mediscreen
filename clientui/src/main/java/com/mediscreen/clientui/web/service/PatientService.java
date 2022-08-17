@@ -2,6 +2,7 @@ package com.mediscreen.clientui.web.service;
 
 import com.mediscreen.clientui.bean.PatientBean;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,4 +52,11 @@ public interface PatientService {
      * @param id a patient id
      */
     void deletePatient(long id);
+
+    /**
+     * searchPatient. Method that search patient in database.
+     *
+     * @param keyword a search keyword
+     */
+    List<PatientBean> searchPatient(String keyword);
 }

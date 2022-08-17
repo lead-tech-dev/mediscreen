@@ -70,7 +70,7 @@ class HistoryControllerTest extends  AbstractTest {
         assertEquals(200, mvcResult.getResponse().getStatus());
         assertEquals(history.getPatientId(), 1);
         assertEquals(history.getId(), historyId);
-        assertEquals(history.getNote(), "Patient states that they are 'feeling terrific' Weight at or below recommended level");
+        assertEquals(history.getNote(), "Le patient dÃ©clare qu'il Â« se sent bien Â» Poids Ã©gal ou infÃ©rieur au niveau recommandÃ©");
     }
 
     @Test
@@ -101,7 +101,7 @@ class HistoryControllerTest extends  AbstractTest {
                 "618273e087def21060318688",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Patient states that they are a short term Smoker Hemoglobin A1C above recommended level");
+                "Le patient déclare qu'il « se sent bien » Poids égal ou inférieur au niveau recommandé");
 
         String inputJson = super.mapToJson(history);
 
@@ -111,7 +111,7 @@ class HistoryControllerTest extends  AbstractTest {
                         .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$.patientId").value(1))
-                .andExpect(jsonPath("$.note").value("Patient states that they are a short term Smoker Hemoglobin A1C above recommended level"))
+                .andExpect(jsonPath("$.note").value("Le patient déclare qu'il « se sent bien » Poids égal ou inférieur au niveau recommandé"))
                 .andReturn();
     }
 
@@ -145,7 +145,7 @@ class HistoryControllerTest extends  AbstractTest {
                 "618273e0",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Patient states that they are a short term Smoker Hemoglobin A1C above recommended level");
+                "Le patient déclare qu'il « se sent bien » Poids égal ou inférieur au niveau recommandé");
 
         String inputJson = super.mapToJson(history);
         // WHEN
@@ -164,7 +164,7 @@ class HistoryControllerTest extends  AbstractTest {
                 "618273e087def21060318688",
                 1L,
                 simpleDateFormat.parse("2021-11-03T23:00:00.518Z"),
-                "Patient states that they are a short term Smoker Hemoglobin A1C above recommended level update");
+                "Le patient déclare qu'il « se sent bien » Poids égal ou inférieur au niveau recommandé update");
 
         String inputJson = super.mapToJson(history);
         // WHEN
@@ -173,7 +173,7 @@ class HistoryControllerTest extends  AbstractTest {
                         .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$.patientId").value(1))
-                .andExpect(jsonPath("$.note").value("Patient states that they are a short term Smoker Hemoglobin A1C above recommended level update"))
+                .andExpect(jsonPath("$.note").value("Le patient déclare qu'il « se sent bien » Poids égal ou inférieur au niveau recommandé update"))
                 .andReturn();
     }
 

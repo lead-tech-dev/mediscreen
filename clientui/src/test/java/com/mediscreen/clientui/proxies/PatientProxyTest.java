@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -54,6 +55,19 @@ class PatientProxyTest {
 
         // THEN
         assertEquals(response, expected);
+    }
+
+    @Test
+    @DisplayName("searchPatient, should return patient list for given keyword")
+    void whenSearchPatient_thenPatientsShouldBeReturned_ForGivenKeyword() throws IOException {
+        // GIVEN
+        Mocks.setupMockGetAllResponse(wireMockServer, "/patient/search/Test", "payload/patient/search-patients-response.json");
+
+        // WHEN
+        List<PatientBean> responses = patientProxy.searchPatient("Test");
+
+        // THEN
+        assertFalse(responses.isEmpty());
     }
 
     @Test
