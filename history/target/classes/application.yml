@@ -6,5 +6,10 @@ spring:
     mongodb:
       database: history-db
       port: 27017
-      host: localhost
+
+      #host: docker-mongo
+      #username: rootuser
+      #password: rootpass
+      #authentication-database: admin
+
 

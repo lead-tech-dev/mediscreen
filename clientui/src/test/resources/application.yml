@@ -5,3 +5,7 @@ patient:
 history:
   service:
     url: http://localhost:9561
+
+assessment:
+  service:
+    url: http://localhost:9561

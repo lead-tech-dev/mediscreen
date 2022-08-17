@@ -6,6 +6,7 @@ import com.mediscreen.clientui.web.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -55,5 +56,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void deletePatient(long id) {
         patientProxy.deletePatient(id);
+    }
+
+    @Override
+    public List<PatientBean> searchPatient(String keyword) {
+        return patientProxy.searchPatient(keyword);
     }
 }

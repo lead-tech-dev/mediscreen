@@ -10,6 +10,7 @@
     <module>clientui</module>
     <module>patient</module>
     <module>history</module>
+    <module>assessment</module>
   </modules>
 
   <groupId>com.mediscreen</groupId>

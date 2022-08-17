@@ -8,6 +8,7 @@
 
 <div class="patient-area">
     <div class="title">
+        <a th:href="@{'/patient/' + ${patientId} + '/history/list'}"><i class='fa fa-arrow-left'></i></a>
         <h2>Update patient note/recommandations</h2>
     </div>
     <div class="content-area">
@@ -20,7 +21,7 @@
                     <input type="text"  name="family" th:value="${family}"  readOnly/>
                 </div>
 
-                <div class='field' th:classappend="${#fields.hasErrors('note')} ? 'error' : ''">
+                <div class='field textarea' th:classappend="${#fields.hasErrors('note')} ? 'error' : ''">
                     <textarea cols="" rows="" name="note" th:text="${historyBean.note}"></textarea>
                     <span class="error-message"
                           th:errors="*{note}" th:if="${#fields.hasErrors('note')}"/>

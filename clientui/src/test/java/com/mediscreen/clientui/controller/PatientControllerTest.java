@@ -22,6 +22,7 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,50 @@ class PatientControllerTest extends AbstractTest{
     @MockBean
     private PatientService patientService;
 
+
+    @Test
+    @DisplayName("searchPatient should return empty list for given not exists keyword")
+    void searchPatient_shouldReturnEmptyList_ForGivenNotExistKeyword() throws Exception {
+        // GIVEN
+        String uri = "/patient/search?keyword=keyword";
+
+        when(patientService.searchPatient("keyword")).thenReturn(Collections.emptyList());
+
+        // WHEN
+        // THEN
+        this.mvc.perform(MockMvcRequestBuilders.get(uri))
+                .andExpect(view().name("result"))
+                .andExpect(content().string(containsString("No result available")))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("searchPatient should return patient list for given keyword")
+    void searchPatient_shouldReturnPatientList_ForGivenKeyword() throws Exception {
+        // GIVEN
+        String uri = "/patient/search?keyword=Cartman";
+        PatientBean patient = new PatientBean(
+                1L,
+                "Cartman",
+                "Eric",
+                "1981-02-23 06:41:05",
+                "M",
+                "7 Rue Lucien Deneau",
+                "999-444-9999");
+        when(patientService.searchPatient("Cartman")).thenReturn(List.of(patient));
+
+        // WHEN
+        // THEN
+        this.mvc.perform(MockMvcRequestBuilders.get(uri))
+                .andExpect(view().name("result"))
+                .andExpect(content().string(containsString("Cartman")))
+                .andExpect(content().string(containsString("Eric")))
+                .andExpect(content().string(containsString("1981-02-23 06:41:05")))
+                .andExpect(content().string(containsString("999-444-9999")))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 
     @Test
     @DisplayName("getPatientList should return patient list")

@@ -34,6 +34,29 @@ class PatientServiceImplTest {
     private PatientServiceImpl patientService;
 
     @Test
+    @DisplayName("searchPatient should return patient list for given keyword")
+    void searchPatient_ShouldReturnPatientList_ForGivenKeyword() {
+        // GIVEN
+
+        PatientBean patient = new PatientBean(
+                1L,
+                "Cartman",
+                "Eric",
+                "1981-02-23 06:41:05",
+                "M",
+                "7 Rue Lucien Deneau",
+                "999-444-9999");
+        when(patientProxy.searchPatient("Cartman")).thenReturn(List.of(patient));
+
+        // WHEN
+        List<PatientBean> responses = patientService.searchPatient("Cartman");
+
+        // THEN
+        assertFalse(responses.isEmpty());
+        assertEquals(responses.get(0), patient);
+    }
+
+    @Test
     @DisplayName("getAllPatient should return patient list")
     void getAllPatient_ShouldReturnPatientList() {
         // GIVEN

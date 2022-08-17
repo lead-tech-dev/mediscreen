@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -27,6 +28,25 @@ public class PatientController {
     private static final Logger log = LoggerFactory.getLogger(PatientController.class);
     @Autowired
     private PatientService patientService;
+
+    /**
+     * getPatientByKeyword. Method that search patient.
+     *
+     * @param keyword a given patient keyword
+     * @return Patient list
+     */
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Patient>> getPatientByKeyword(@PathVariable("keyword") String keyword) {
+
+        log.info("init search with keyword {}", keyword);
+
+        List<Patient> patients = patientService.searchPatient(keyword);
+
+        log.info("Getting search result success. result  data {}",
+                patients);
+
+        return new ResponseEntity<>(patients, HttpStatus.OK);
+    }
 
     /**
      * getAllPatient. Method that get current page list
