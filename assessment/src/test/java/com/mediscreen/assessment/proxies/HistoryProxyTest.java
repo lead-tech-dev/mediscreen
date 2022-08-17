@@ -42,7 +42,7 @@ class HistoryProxyTest {
     @DisplayName("getAllHistoryByPatientId, should return patient history list")
     void whenGetAllHistoryByPatientId_thenPatientHistoryListShouldBeReturned() throws IOException, ParseException {
         // GIVEN
-        Mocks.setupMockGetAllResponse(wireMockServer, "/history/getAll/1", "payload/history/get-histories-response.json");
+        Mocks.setupMockGetAllResponse(wireMockServer, "/history/getAll/1", "payload/get-history-response.json");
         HistoryBean expected = new HistoryBean(
                 "618273e087def21060318688",
                 1L,
