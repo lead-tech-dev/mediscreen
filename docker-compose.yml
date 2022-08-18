@@ -12,11 +12,13 @@ services:
     environment:
       - patient.service.url=http://patient-microservice:8081
       - history.service.url=http://history-microservice:8082
+      - assessment.service.url=http://assessment-microservice:8083
     networks:
       - web-server-bridge
     depends_on:
       - patient-microservice
       - history-microservice
+      - assessment-microservice
 
   patient-microservice:
     image: patient-microservice
@@ -35,6 +37,10 @@ services:
         "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto": "update"
     }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
     networks:
       - web-server-bridge
     depends_on:
@@ -60,8 +66,22 @@ services:
     depends_on:
       - history-mongo-db
 
+  assessment-microservice:
+    image: assessment-microservice
+    build:
+      context: assessment
+      dockerfile: Dockerfile
+    restart: on-failure
+    container_name: assessment-microservice
+    ports:
+      - 8083:8083
+    environment:
+      - history.service.url=http://history-microservice:8082
+    networks:
+      - web-server-bridge
+
   patient-mysql-db:
-    image: mysql:5.7
+    image: mysql:5.6
     container_name: mysqldb
     restart: unless-stopped
     environment:
@@ -92,7 +112,7 @@ services:
 
 
 volumes:
-  db-data: {}
+  db-data:
 
 networks:
   web-server-bridge:
