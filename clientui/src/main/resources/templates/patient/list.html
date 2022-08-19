@@ -11,7 +11,7 @@
         <div class="title">
             <h2>Patient managment</h2>
         </div>
-        <div class="content-area">
+        <div class="content-area" th:if="${!patients.empty}">
             <form method="get" th:action="@{/patient/search}">
             <div class="content-head">
 
@@ -23,8 +23,9 @@
                     </div>
 
                 <a th:href="@{/patient/addForm}" class="btn-primary"><i class="fa fa-plus"></i>  New patient</a>
-            </form>
             </div>
+            </form>
+
             <table class="table">
                 <tr>
                     <th>Nom</th>
@@ -59,6 +60,25 @@
                     &raquo;</a>
             </div>
         </div>
+        <div class="content-area" th:if="${patients.empty}">
+        <div class="content-head">
+            <div class="search">
+            </div>
+            <a th:href="@{/patient/addForm}" class="btn-primary"><i class="fa fa-plus"></i>  New patient</a>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de naissance</th>
+                <th>Numéro de téléphone</th>
+                <th>Action</th>
+            </tr>
+        </table>
+        <div style="text-align: center; margin-top: 20px; font-size: 25px">
+            <h3>No patient available</h3>
+        </div>
+    </div>
     </div>
 </div>
 
