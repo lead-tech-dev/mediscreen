@@ -79,6 +79,8 @@ services:
       - history.service.url=http://history-microservice:8082
     networks:
       - web-server-bridge
+    depends_on:
+      - history-microservice
 
   patient-mysql-db:
     image: mysql:5.6
@@ -110,9 +112,8 @@ services:
     networks:
       - web-server-bridge
 
-
 volumes:
-  db-data:
+  db-data: {}
 
 networks:
   web-server-bridge:
