@@ -15,12 +15,14 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = HistoryApplication.class)
 @WebAppConfiguration
+@EnableWebMvc
 public abstract class AbstractTest {
   protected MockMvc mvc;
   @Autowired

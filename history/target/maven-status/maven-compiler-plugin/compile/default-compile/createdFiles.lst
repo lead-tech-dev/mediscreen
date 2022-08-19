@@ -1,3 +1,4 @@
+com\mediscreen\history\configuration\SwaggerConfig.class
 com\mediscreen\history\web\service\HistoryService.class
 com\mediscreen\history\web\controller\HistoryController.class
 com\mediscreen\history\web\exception\BadRequestException.class

@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
+@EnableSwagger2
 public class HistoryApplication implements CommandLineRunner {
 
     private final Logger logger = LoggerFactory.getLogger(HistoryApplication.class);

@@ -5,11 +5,13 @@ spring:
   data:
     mongodb:
       database: history-db
-      #host: localhost
-      port: 27017
-      host: docker-mongo
-      username: rootuser
-      password: rootpass
-      authentication-database: admin
+      host: localhost
+      #port: 27017
+      #host: docker-mongo
+      #username: rootuser
+      #password: rootpass
+      #authentication-database: admin
 
-
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

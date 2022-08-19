@@ -8,81 +8,83 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
-<span class="fc" id="L17">public class HistoryApplication implements CommandLineRunner {</span>
+@EnableSwagger2
+<span class="fc" id="L19">public class HistoryApplication implements CommandLineRunner {</span>
 
-<span class="fc" id="L19">    private final Logger logger = LoggerFactory.getLogger(HistoryApplication.class);</span>
+<span class="fc" id="L21">    private final Logger logger = LoggerFactory.getLogger(HistoryApplication.class);</span>
 
     @Autowired
     private HistoryRepository historyRepository;
 
     public static void main(String[] args) {
-<span class="nc" id="L25">        SpringApplication.run(HistoryApplication.class, args);</span>
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L27">        SpringApplication.run(HistoryApplication.class, args);</span>
+<span class="nc" id="L28">    }</span>
 
     @Override
     public void run(String... args) throws Exception {
-<span class="fc" id="L30">        logger.info(&quot;Start !&quot;);</span>
-<span class="fc" id="L31">        historyRepository.deleteAll();</span>
-<span class="fc" id="L32">        historyRepository.saveAll(</span>
-<span class="fc" id="L33">                List.of(</span>
+<span class="fc" id="L32">        logger.info(&quot;Start !&quot;);</span>
+<span class="fc" id="L33">        historyRepository.deleteAll();</span>
+<span class="fc" id="L34">        historyRepository.saveAll(</span>
+<span class="fc" id="L35">                List.of(</span>
                         new History(
                                 &quot;6177a31824f1d205e0b0692d&quot;,
                                 1L,
-<span class="fc" id="L37">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-02-04T07:04:03.321Z&quot;),</span>
+<span class="fc" id="L39">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-02-04T07:04:03.321Z&quot;),</span>
                                 &quot;Le patient déclare qu'il « se sent bien » Poids égal ou inférieur au niveau recommandé&quot;),
                         new History(
                                 &quot;6177a3648207e0587345067a&quot;,
                                 2L,
-<span class="fc" id="L42">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-05-10T07:04:03.321Z&quot;),</span>
+<span class="fc" id="L44">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-05-10T07:04:03.321Z&quot;),</span>
                                 &quot;Le patient déclare qu'il ressent beaucoup de stress au travail Le patient se plaint également que son audition semble anormale ces derniers temps&quot;),
                         new History(
                                 &quot;6177a39b665edf352cf74f90&quot;,
                                 2L,
-<span class="fc" id="L47">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-08-01T07:04:03.321Z&quot;),</span>
+<span class="fc" id="L49">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-08-01T07:04:03.321Z&quot;),</span>
                                 &quot;Le patient déclare avoir eu une réaction aux médicaments au cours des 3 derniers mois Le patient se plaint également avoir des vertige depuis 1 semaine&quot;),
                         new History(
                                 &quot;6178f9e3c2533871717abaf2&quot;,
                                 3L,
-<span class="fc" id="L52">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-10-27T07:04:03.321Z&quot;),</span>
+<span class="fc" id="L54">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-10-27T07:04:03.321Z&quot;),</span>
                                 &quot;Le patient déclare qu'il est un fumeur à court terme&quot;),
                         new History(
                                 &quot;6178fa80b2162e1fd560e33f&quot;,
                                 3L,
-<span class="fc" id="L57">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-10-27T07:04:03.321Z&quot;),</span>
+<span class="fc" id="L59">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-10-27T07:04:03.321Z&quot;),</span>
                                 &quot;Le patient déclare avoir arrêté de fumer au cours de l'année dernière Le patient se plaint également d'épisodes respiratoires anormaux Rapports de laboratoire Cholestérol LDL élevé&quot;),
                         new History(
                                 &quot;618244a55ec6eb500c8b5be0&quot;,
                                 4L,
-<span class="fc" id="L62">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+<span class="fc" id="L64">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
                                 &quot;Le patient déclare qu'il est devenu difficile de monter les escaliers Le patient se plaint également d'être essoufflé Les résultats de laboratoire indiquent que les anticorps sont élevés Réaction aux médicaments&quot;),
                         new History(
                                 &quot;618273e087deb21060318688&quot;,
                                 4L,
-<span class="fc" id="L67">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+<span class="fc" id="L69">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
                                 &quot;Le patient taille normal déclare qu'il souffre de maux de dos anormal lorsqu'il est assis pendant une longue période hémoglobine A1C&quot;),
                         new History(
                                 &quot;618244a55eb6eb600c8b5be0&quot;,
                                 4L,
-<span class="fc" id="L72">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+<span class="fc" id="L74">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
                                 &quot;Le patient déclare qu'il est un fumeur à court terme Hémoglobine A1C au-dessus du niveau recommandé&quot;),
                         new History(
                                 &quot;618273e087def21060318688&quot;,
                                 4L,
-<span class="fc" id="L77">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
+<span class="fc" id="L79">                                new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(&quot;2021-11-03T08:13:25.518Z&quot;),</span>
                                 &quot;Le patient déclare que la taille corporelle, le poids corporel, le cholestérol, les étourdissements et la réaction&quot;)
                 )
 
         );
 
-<span class="fc" id="L83">        historyRepository.findAllByPatientId(4).forEach((history) -&gt; {</span>
-<span class="fc" id="L84">            logger.info(&quot;{}&quot;, history);</span>
-<span class="fc" id="L85">        });</span>
-<span class="fc" id="L86">    }</span>
+<span class="fc" id="L85">        historyRepository.findAllByPatientId(4).forEach((history) -&gt; {</span>
+<span class="fc" id="L86">            logger.info(&quot;{}&quot;, history);</span>
+<span class="fc" id="L87">        });</span>
+<span class="fc" id="L88">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

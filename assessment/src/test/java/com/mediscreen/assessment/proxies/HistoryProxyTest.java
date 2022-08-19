@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -25,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles("test")
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
+@EnableWebMvc
 @ContextConfiguration(classes = { WireMockConfig.class })
 @Tag("HistoryProxyTest")
 @DisplayName("History proxy test logic")

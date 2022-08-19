@@ -1,7 +1,12 @@
 server:
   port: 8083
 
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 history:
   service:
     url: http://localhost:8082
+

@@ -16,7 +16,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.mediscreen.patient.web"))
-                .paths(PathSelectors.regex("/patient*"))
+                //.paths(PathSelectors.regex("/patient*"))
                 .build();
     }
 }

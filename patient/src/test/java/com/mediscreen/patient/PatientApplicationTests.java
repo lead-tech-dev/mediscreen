@@ -7,6 +7,4 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootTest
 class PatientApplicationTests {
 
-
-
 }
