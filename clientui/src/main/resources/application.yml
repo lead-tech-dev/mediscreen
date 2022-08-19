@@ -9,3 +9,8 @@ history:
 assessment:
   service:
     url: http://localhost:8083
+
+server:
+  error:
+    whitelabel:
+      enabled: false

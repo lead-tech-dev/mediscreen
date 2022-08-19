@@ -12,7 +12,7 @@
             <a th:href="@{/patient/list}"><i class='fa fa-arrow-left'></i></a>
             <h2>Note/recommandations</h2>
         </div>
-        <div class="content-area">
+        <div class="content-area" th:if="${!histories.empty}">
             <div class="content-head">
                 <a th:href="${'/patient/' + {patient.id} + '/history/addForm'}" class="btn-primary"><i class="fa fa-plus"></i>  Add note</a>
             </div>
@@ -23,7 +23,7 @@
                     <th>Action</th>
                 </tr>
                 <tr th:each="history: ${histories}">
-                    <td th:text="${#strings.substring(history.note,0,25)}"/>
+                    <td th:text="${#strings.substring(history.note,0,25) + '...'}"/>
                     <td th:text="${#dates.format(history.date, 'dd-MM-yyyy')}"/>
                     <td>
                         <a th:href="${'/patient/' + {patient.id} + '/history/' + {history.id} + '/updateForm'}"><i class="fa fa-edit"></i></a>
@@ -33,6 +33,22 @@
                 </tr>
 
             </table>
+
+        </div>
+        <div class="content-area" th:if="${histories.empty}">
+            <div class="content-head">
+                <a th:href="${'/patient/' + {patient.id} + '/history/addForm'}" class="btn-primary"><i class="fa fa-plus"></i>  Add note</a>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Date </th>
+                    <th>Note</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+            <div style="text-align: center; margin-top: 20px; font-size: 25px">
+                <h3>No history available</h3>
+            </div>
 
         </div>
     </div>

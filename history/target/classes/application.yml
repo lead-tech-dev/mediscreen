@@ -5,8 +5,8 @@ spring:
   data:
     mongodb:
       database: history-db
-      port: 27017
-
+      host: localhost
+      #port: 27017
       #host: docker-mongo
       #username: rootuser
       #password: rootpass

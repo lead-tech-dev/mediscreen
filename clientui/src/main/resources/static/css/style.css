@@ -343,6 +343,7 @@ textarea {
 }
 
 .patient-area {
+    min-height: 80vh;
     padding: 50px 2vw;
 }
 .patient-area .title {
@@ -370,9 +371,6 @@ textarea {
     color: hsl(var(--clr-white));
     text-align: center;
     margin-right: 20px;
-}
-.patient-area .content-area {
-    min-height: 45vh;
 }
 .patient-area .content-area .content-head {
     display: grid;
@@ -453,6 +451,13 @@ textarea {
 }
 .patient-area .content-area .assessment-inner h3 span.onset {
     color: hsl(var(--clr-red));
+}
+.patient-area .error-inner {
+    width: 50%;
+    border: 1px solid hsl(var(--clr-blue));
+    margin: 60px auto;
+    padding: 20px;
+    line-height: 50px;
 }
 
 .footer-area {
